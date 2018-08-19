@@ -1,0 +1,23 @@
+<!---->
+<input type="text" ng-model="nameFilter" placeholder="Search..."/>
+<table>
+<thead>
+  <tr><th colspan="4">Drivers Championship Standings</th></tr>
+</thead>
+<tbody>
+<!--"ng-repeat" directive: used to define your template scrope when looping through collections
+In this example it replicates a line in the table for each driver in "driversList"-->
+  <tr ng-repeat="driver in driversList | filter: searchFilter">
+    <td>{{$index + 1}}</td>
+    <td>
+      <img src="img/flags/{{driver.Driver.nationality}}.png" />
+      <a href="#/drivers/{{driver.Driver.driverId}}">
+      <!--Expressions "{{" and "}}" are used to return variable values. Expressions allow you to execute computation -->
+	  	{{driver.Driver.givenName}}&nbsp;{{driver.Driver.familyName}}
+	  </a>
+	</td>
+    <td>{{driver.Constructors[0].name}}</td>
+    <td>{{driver.points}}</td>
+  </tr>
+</tbody>
+</table>
